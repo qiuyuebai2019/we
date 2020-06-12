@@ -94,7 +94,7 @@
           </el-form-item>
 
           <el-form-item class="w100" prop="content" label="内容">
-            <quillEditor :content.sync="formCompanyProfile.content"></quillEditor>
+            <quillEditor :content.sync="formCompanyProfile.content" :disabled="editable"></quillEditor>
           </el-form-item>
 
         </el-form>
@@ -117,11 +117,13 @@
    * @date :
    */
   import quillEditor from '../sys/components/website/QuillEditor';
+
   export default {
     name: "CompanyProfile",
     components: {quillEditor},
     data() {
       return {
+        editable: '',
         formCompanyProfileTitle: "",
         dialogCompanyProfileFormVisible: false,//弹窗是否显示
         formCompanyProfile: {},//表单数据
@@ -172,6 +174,7 @@
         this.formCompanyProfile = {}
         this.dialogCompanyProfileFormVisible = true
         this.isCompanyProfileDisabled = false
+        this.editable = false
       },
       //保存
       saveCompanyProfileForm() {
@@ -242,6 +245,7 @@
           }
         )
         this.isCompanyProfileDisabled = isCompanyProfileDisabled
+        this.editable = isCompanyProfileDisabled
       },
       handleCompanyProfileSelectionChange(val) {
         this.multipleSelectionCompanyProfile = val;

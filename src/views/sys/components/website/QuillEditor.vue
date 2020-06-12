@@ -20,10 +20,10 @@
         type: String,
         default: ''
       },
-      // 是否可编辑 true表示可编辑， false表示禁用
+      // 是否可编辑 true表示禁用， false表示可编辑
       disabled: {
         type: Boolean,
-        default: true
+        default: ''
       },
       // 富文本内容
       content: {
@@ -55,6 +55,9 @@
     mounted() {
       this.newValue = null;
       this.newValue = this.content;
+
+      // 初始化富文本是否 可编辑
+      this.$refs.myQuillEditor.quill.enable(!this.disabled);
     },
 
     watch: {
@@ -67,8 +70,8 @@
       },
 
       disabled: function (val) {
-        // 控制富文本禁用
-        this.$refs.myQuillEditor.quill.enable(val);
+        // 控制富文本是否可编辑
+        this.$refs.myQuillEditor.quill.enable(!this.disabled);
       },
     }
   }

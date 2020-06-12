@@ -99,7 +99,7 @@
           </el-form-item>
 
           <el-form-item class="w100" prop="content" label="详细内容">
-            <quillEditor :content.sync="formRecruitment.content"></quillEditor>
+            <quillEditor :content.sync="formRecruitment.content" :disabled="editable"></quillEditor>
           </el-form-item>
 
         </el-form>
@@ -123,11 +123,13 @@
    */
 
   import quillEditor from '../sys/components/website/QuillEditor';
+
   export default {
     name: "Recruitment",
     components: {quillEditor},
     data() {
       return {
+        editable: '',
         formRecruitmentTitle: "招聘信息",
         dialogRecruitmentFormVisible: false,//弹窗是否显示
         formRecruitment: {},//表单数据
@@ -178,11 +180,12 @@
         this.formRecruitment = {}
         this.dialogRecruitmentFormVisible = true
         this.isRecruitmentDisabled = false
+        this.editable = false
       },
       //保存
       saveRecruitmentForm() {
         let _self = this
-        _self.formRecruitment.httpAddress="/address"
+        _self.formRecruitment.httpAddress = "/address"
         if (!_self.commonUtils.checkForm('formRecruitment', _self)) {
           return false
         }//表单校验
@@ -249,6 +252,7 @@
           }
         )
         this.isRecruitmentDisabled = isRecruitmentDisabled
+        this.editable = isRecruitmentDisabled
       },
       handleRecruitmentSelectionChange(val) {
         this.multipleSelectionRecruitment = val;

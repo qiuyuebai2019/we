@@ -95,44 +95,44 @@
           </el-form-item>
 
           <el-form-item class="w100" prop="abstracts" label="摘要">
-            <quillEditor :content.sync="formProjectIntroduction.abstracts"></quillEditor>
+            <quillEditor :content.sync="formProjectIntroduction.abstracts" :disabled="editable"></quillEditor>
           </el-form-item>
 
 
           <el-form-item class="w100" prop="background" label="建设背景">
-            <quillEditor :content.sync="formProjectIntroduction.background"></quillEditor>
+            <quillEditor :content.sync="formProjectIntroduction.background" :disabled="editable"></quillEditor>
           </el-form-item>
 
           <el-form-item class="w100" prop="solveProblems" label="解决问题">
-            <quillEditor :content.sync="formProjectIntroduction.solveProblems"></quillEditor>
+            <quillEditor :content.sync="formProjectIntroduction.solveProblems" :disabled="editable"></quillEditor>
           </el-form-item>
 
           <el-form-item class="w100" prop="principle" label="建设原则">
-            <quillEditor :content.sync="formProjectIntroduction.principle"></quillEditor>
+            <quillEditor :content.sync="formProjectIntroduction.principle" :disabled="editable"></quillEditor>
           </el-form-item>
 
           <el-form-item class="w100" prop="target" label="总体目标">
-            <quillEditor :content.sync="formProjectIntroduction.target"></quillEditor>
+            <quillEditor :content.sync="formProjectIntroduction.target" :disabled="editable"></quillEditor>
           </el-form-item>
 
           <el-form-item class="w100" prop="overallArchitecture" label="总体架构">
-            <quillEditor :content.sync="formProjectIntroduction.overallArchitecture"></quillEditor>
+            <quillEditor :content.sync="formProjectIntroduction.overallArchitecture" :disabled="editable"></quillEditor>
           </el-form-item>
 
           <el-form-item class="w100" prop="appArchitecture" label="应用架构">
-            <quillEditor :content.sync="formProjectIntroduction.appArchitecture"></quillEditor>
+            <quillEditor :content.sync="formProjectIntroduction.appArchitecture" :disabled="editable"></quillEditor>
           </el-form-item>
 
           <el-form-item class="w100" prop="mentality" label="总体思路">
-            <quillEditor :content.sync="formProjectIntroduction.mentality"></quillEditor>
+            <quillEditor :content.sync="formProjectIntroduction.mentality" :disabled="editable"></quillEditor>
           </el-form-item>
 
           <el-form-item class="w100" prop="content" label="建设内容">
-            <quillEditor :content.sync="formProjectIntroduction.content"></quillEditor>
+            <quillEditor :content.sync="formProjectIntroduction.content" :disabled="editable"></quillEditor>
           </el-form-item>
 
           <el-form-item class="w100" prop="requirement" label="软硬件要求">
-            <quillEditor :content.sync="formProjectIntroduction.requirement"></quillEditor>
+            <quillEditor :content.sync="formProjectIntroduction.requirement" :disabled="editable"></quillEditor>
           </el-form-item>
 
         </el-form>
@@ -156,11 +156,13 @@
    * @date :
    */
   import quillEditor from '../sys/components/website/QuillEditor';
+
   export default {
     name: "ProjectIntroduction",
     components: {quillEditor},
     data() {
       return {
+        editable: '',
         formProjectIntroductionTitle: "项目信息",
         dialogProjectIntroductionFormVisible: false,//弹窗是否显示
         formProjectIntroduction: {},//表单数据
@@ -215,11 +217,12 @@
         this.formProjectIntroduction = {}
         this.dialogProjectIntroductionFormVisible = true
         this.isProjectIntroductionDisabled = false
+        this.editable = false
       },
       //保存
       saveProjectIntroductionForm() {
         let _self = this
-        _self.formProjectIntroduction.httpAddress="/address"
+        _self.formProjectIntroduction.httpAddress = "/address"
         if (!_self.commonUtils.checkForm('formProjectIntroduction', _self)) {
           return false
         }//表单校验
@@ -286,6 +289,7 @@
           }
         )
         this.isProjectIntroductionDisabled = isProjectIntroductionDisabled
+        this.editable = isProjectIntroductionDisabled
       },
       handleProjectIntroductionSelectionChange(val) {
         this.multipleSelectionProjectIntroduction = val;

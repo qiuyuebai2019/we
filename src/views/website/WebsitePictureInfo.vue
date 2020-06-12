@@ -158,12 +158,13 @@
           </el-form-item>
 
           <el-form-item class="w25" prop="releaseTime" label="发布时间">
-            <el-date-picker v-model="formWebsitePictureInfo.releaseTime" type="date" style="width:100%" :editable="false">
+            <el-date-picker v-model="formWebsitePictureInfo.releaseTime" type="date" style="width:100%"
+                            :editable="false">
             </el-date-picker>
           </el-form-item>
 
           <el-form-item class="w100" prop="content" label="资讯内容">
-            <quillEditor :content.sync="formWebsitePictureInfo.content"></quillEditor>
+            <quillEditor :content.sync="formWebsitePictureInfo.content" :disabled="editable"></quillEditor>
           </el-form-item>
 
           <el-form-item class="w100" prop="content"></el-form-item>
@@ -189,11 +190,13 @@
    * @date :
    */
   import quillEditor from '../sys/components/website/QuillEditor';
+
   export default {
     name: "WebsitePictureInfo",
     components: {quillEditor},
     data() {
       return {
+        editable: '',
         formWebsitePictureInfoTitle: "资讯信息",
         dialogWebsitePictureInfoFormVisible: false,//弹窗是否显示
         formWebsitePictureInfo: {},//表单数据
@@ -247,6 +250,7 @@
         this.formWebsitePictureInfo = {}
         this.dialogWebsitePictureInfoFormVisible = true
         this.isWebsitePictureInfoDisabled = false
+        this.editable = false
       },
       //保存
       saveWebsitePictureInfoForm() {
@@ -321,6 +325,7 @@
           }
         )
         this.isWebsitePictureInfoDisabled = isWebsitePictureInfoDisabled
+        this.editable = isWebsitePictureInfoDisabled
       },
       handleWebsitePictureInfoSelectionChange(val) {
         this.multipleSelectionWebsitePictureInfo = val;
