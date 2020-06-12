@@ -1,5 +1,5 @@
 <template>
-  <div :style="{'width':'100%','height':'(height)'}">
+  <div :style="{'width':'100%','height':(height)}">
       <img src="http://img.pconline.com.cn/images/upload/upc/tx/wallpaper/1308/17/c2/24561028_1376699679457.jpg" width="100%" height="100%">
   </div>
 </template>
