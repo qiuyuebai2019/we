@@ -9,7 +9,7 @@
         </el-form-item>
 
         <el-form-item class="w25" label="推广优先级">
-          <el-input v-model="searchWebsitePictureInfoForm.promote" placeholder="项目名称"></el-input>
+          <el-input v-model="searchWebsitePictureInfoForm.promote" placeholder="推广优先级"></el-input>
         </el-form-item>
 
         <el-form-item class="w25" label="资讯类型">
@@ -90,7 +90,7 @@
         <el-table-column prop="promote" label="推广优先级" align="center" :formatter="commonUtils.formatMoney"
                          width="100"></el-table-column>
 
-        <el-table-column prop="content" label="资讯内容" width="450"></el-table-column>
+        <el-table-column prop="content" label="资讯内容" width="300"></el-table-column>
 
         <el-table-column prop="releaseTime" label="发布时间" align="center" :formatter="commonUtils.formatDate"
                          width="140"></el-table-column>

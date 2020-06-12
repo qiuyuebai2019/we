@@ -9,7 +9,7 @@
         </el-form-item>
 
         <el-form-item class="w25" label="推广优先级">
-          <el-input v-model="searchProjectIntroductionForm.promote" placeholder="项目名称"></el-input>
+          <el-input v-model="searchProjectIntroductionForm.promote" placeholder="推广优先级"></el-input>
         </el-form-item>
 
       </el-form>
@@ -55,7 +55,7 @@
 
         <el-table-column prop="projectName" label="项目名称" width="250"></el-table-column>
 
-        <el-table-column prop="abstracts" label="摘要" width="800"></el-table-column>
+        <el-table-column prop="abstracts" label="摘要" width="440"></el-table-column>
 
         <el-table-column prop="promote" label="推广优先级" align="center" :formatter="commonUtils.formatMoney"
                          width="100"></el-table-column>
