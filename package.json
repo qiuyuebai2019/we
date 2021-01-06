@@ -14,7 +14,7 @@
     "postcss:test": "postcss ./src/assets/test.css -o ./dist/output_test.css -u autoprefixer"
   },
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "babel-polyfill": "^6.26.0",
     "echarts": "^4.1.0",
     "el-tree-transfer": "^2.2.9",
