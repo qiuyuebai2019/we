@@ -22,7 +22,7 @@
     "element-ui-verify": "^1.2.6",
     "font-awesome": "^4.7.0",
     "js-pinyin": "^0.1.9",
-    "three": "^0.114.0",
+    "three": "^0.137.0",
     "vue": "^2.5.2",
     "vue-axios": "^2.1.4",
     "vue-baidu-map": "^0.21.22",
